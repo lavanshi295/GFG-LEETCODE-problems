@@ -12,8 +12,8 @@ public:
 
             else{
                 //make an vector to store the last interval in our ans
-                vector<int>&v = ans.back(); //end time of previous interval
-                int y = v[1]; 
+                vector<int>&v = ans.back(); 
+                int y = v[1]; //end time of previous interval
                 //compare y with i's start time
                 //overlapping intervals
                 if(intervals[i][0] <= y)
