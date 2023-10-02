@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        int n = nums.size();
+        deque<int>dq;
+        vector<int>ans;
+
+        for(int i=0; i<n; i++){
+            //check for the case of out of bound element
+            if(!dq.empty() && dq.front() == i-k) dq.pop_front();
+
+            //if the curr element is greater than prev then pop from deque
+            while(!dq.empty() && nums[dq.back()] < nums[i]){
+                dq.pop_back();
+            }
+
+            //and push the curr index
+            dq.push_back(i);
+            //if i is at the last element then push to ans
+            if(i>= k-1) ans.push_back(nums[dq.front()]);
+        }
+        return ans;
+    }
+};
